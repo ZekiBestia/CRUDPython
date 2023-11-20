@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block titulo %} Lista de Panes {% endblock %}
+{% block contenido %}
+    <div class="card">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-primary" href="{% url 'crearE' %}" role="button">Agregar Empleado</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Empleado</h4>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>ocupacion</th>
+                        <th>sueldo</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for empleado in Empleados %}
+                        <tr>
+                            <td>{{empleado.id}}</td>
+                            <td>{{empleado.nombre}}</td>
+                            <td>{{empleado.apellido}}</td>
+                            <td>{{empleado.ocupacion}}</td>
+                            <td>{{empleado.sueldo}}</td>
+                            <td>
+                                <img src="{{empleado.imagen.url}}" height="100" width="100">
+                                </td>
+                            <td>
+                                <a href="{% url 'editarE' empleado.id %}" class="btn btn-primary">Editar</a>
+                                <a href="{% url 'eliminarE' empleado.id %}" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                   
+                    <!-- Fin del ejemplo -->
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer text-muted">
+        
+        </div>
+    </div>
+{% endblock %}
