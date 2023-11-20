@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('nombre', models.CharField(max_length=50)),
                 ('apellido', models.CharField(max_length=50)),
-                ('ocupacion', models.CharField(max_length=50)),
+                ('cargo', models.CharField(max_length=50)),
                 ('sueldo', models.IntegerField()),
                 ('imagen', models.ImageField(null=True, upload_to='imagenes/', verbose_name='Imagen')),
             ],

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Pan,Empleado
 from .forms import PanForm,EmpleadoForm
+from django.shortcuts import get_object_or_404
 def inicio(request):
     return render(request, 'paginas/inicio.html')
 
@@ -28,7 +29,7 @@ def editarP(request,id):
         return redirect('Panes')
     return render(request, 'Panes/editar.html',{'formulario':formulario,})
 def eliminarP(request,id):
-    pan=Pan.objects.get(id=id)
+    pan = get_object_or_404(Pan, id=id)
     pan.delete()
     return redirect('Panes')
 def Empleados(request):
