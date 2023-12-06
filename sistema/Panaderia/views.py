@@ -10,15 +10,15 @@ def Init(request):
     return render(request, 'paginas/Init.html')
 
 def Panes(request):
+    # esta recupera todos los datos de la base de datos
     Panes = Pan.objects.all()
-    print(Panes)
     return render(request, 'Panes/index.html',{'Panes':Panes})
-
 def crearP(request):
     formulario = PanForm(request.POST or None,request.FILES or None)
     if formulario.is_valid():
         formulario.save()
         return redirect('Panes')
+    # renderizar la plantilla 'crear.html' junto con el formulario
     return render(request, 'Panes/crear.html',{'formulario':formulario})
 
 def editarP(request,id):
@@ -33,8 +33,8 @@ def eliminarP(request,id):
     pan.delete()
     return redirect('Panes')
 def Empleados(request):
+    # esta recupera todos los datos de la tabla Empleadopoy
     Empleados = Empleado.objects.all()
-    print(Empleados)
     return render(request, 'Empleados/index.html',{'Empleados':Empleados})    
 def crearE(request):
     formulario = EmpleadoForm(request.POST or None,request.FILES or None)
